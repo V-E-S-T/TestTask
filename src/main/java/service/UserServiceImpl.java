@@ -7,6 +7,8 @@ import org.springframework.util.Assert;
 import repository.UserRepository;
 import util.exception.NotFoundException;
 
+import java.util.List;
+
 import static util.ValidationUtil.checkNotFoundWithId;
 
 @Service
@@ -33,6 +35,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User get(int id) throws NotFoundException {
         return checkNotFoundWithId(userRepository.get(id), id);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.getAll();
     }
 
     @Override

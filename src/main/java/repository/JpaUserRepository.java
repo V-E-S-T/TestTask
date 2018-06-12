@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
@@ -32,6 +33,11 @@ public class JpaUserRepository implements UserRepository{
     public User get(int id) {
 
         return em.find(User.class, id);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return em.createQuery("SELECT u FROM User u ORDER BY u.firstName, u.lastName", User.class).getResultList();
     }
 
     @Override
