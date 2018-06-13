@@ -1,13 +1,11 @@
-package web.controller;
+package com.web.user;
 
-import model.User;
+import com.service.UserService;
+import com.util.ValidationUtil;
+import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.UserService;
 
 import java.util.List;
-
-import static util.ValidationUtil.assureIdConsistent;
-import static util.ValidationUtil.checkNew;
 
 public abstract class AbstractController {
 
@@ -26,7 +24,7 @@ public abstract class AbstractController {
 
     public User create(User user) {
 
-        checkNew(user);
+        ValidationUtil.checkNew(user);
         return service.create(user);
     }
 
@@ -37,7 +35,7 @@ public abstract class AbstractController {
 
     public void update(User user, int id) {
 
-        assureIdConsistent(user, id);
+        ValidationUtil.assureIdConsistent(user, id);
         service.update(user);
     }
 }

@@ -1,6 +1,6 @@
-package web.controller;
+package com.web.user;
 
-import model.User;
+import com.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(UserRESTController.REST_URL)
-public class UserRESTController extends AbstractController{
+@RequestMapping(UserRestController.REST_URL)
+public class UserRestController extends AbstractController{
 
     static final String REST_URL = "/rest/admin/users";
 

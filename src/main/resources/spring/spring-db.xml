@@ -18,6 +18,7 @@
         <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
     </jdbc:initialize-database>
 
+    <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
     <bean id="dataSource"
           class="org.apache.tomcat.jdbc.pool.DataSource"
           p:driverClassName="org.postgresql.Driver"
@@ -44,7 +45,7 @@
 
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource"
-              p:packagesToScan="model">
+              p:packagesToScan="com.model">
 
             <property name="jpaPropertyMap">
                 <map>
@@ -65,6 +66,6 @@
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
               p:entityManagerFactory-ref="entityManagerFactory"/>
 
-        <context:component-scan base-package="repository"/>
+        <context:component-scan base-package="com.repository"/>
 
 </beans>

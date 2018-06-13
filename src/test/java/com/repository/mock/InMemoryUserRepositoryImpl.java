@@ -1,8 +1,9 @@
 package com.repository.mock;
 
-import model.User;
-import repository.UserRepository;
+import com.model.User;
+import com.repository.UserRepository;
 import com.UserTestData;
+import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
+@Repository
 public class InMemoryUserRepositoryImpl implements UserRepository{
 
     private Map<Integer, User> repository = new ConcurrentHashMap<>();

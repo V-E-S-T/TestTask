@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.User;
+import com.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

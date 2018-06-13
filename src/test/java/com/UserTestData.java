@@ -2,22 +2,23 @@ package com;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.User;
+import com.model.User;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 
-import static model.AbstractEntity.START_SEQ;
+import static com.model.AbstractEntity.START_SEQ;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 public class UserTestData {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    public static final ObjectMapper MAPPER = new ObjectMapper();
 
     //Test Data
-    public static final User USER0 = new User(START_SEQ,        "Petro", "Sagaydak", Date.valueOf("02-11-1984"), true);   //7
+    public static final User USER0 = new User(START_SEQ,        "Petro", "Sagaydak", LocalDate.of(1986, 8, 15), true);   //7
     public static final User USER1 = new User(START_SEQ + 1, "Yakov", "Betrich", Date.valueOf("03-10-1974"), true);    //9
     public static final User USER2 = new User(START_SEQ + 2, "Mustafa", "Mabibulin", Date.valueOf("04-09-1988"), true);//4
     public static final User USER3 = new User(START_SEQ + 3, "Igor", "Kravec", Date.valueOf("05-08-1992"), true);      //1

@@ -1,4 +1,4 @@
-package model;
+package com.model;
 
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
