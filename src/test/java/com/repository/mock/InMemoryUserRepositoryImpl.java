@@ -1,7 +1,7 @@
 package com.repository.mock;
 
-import model.User;
-import repository.UserRepository;
+import com.model.User;
+import com.repository.UserRepository;
 import com.UserTestData;
 
 import java.util.Comparator;

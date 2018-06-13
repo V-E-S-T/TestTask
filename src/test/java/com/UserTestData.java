@@ -2,13 +2,13 @@ package com;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.User;
+import com.model.User;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.sql.Date;
 import java.util.Arrays;
 
-import static model.AbstractEntity.START_SEQ;
+import static com.model.AbstractEntity.START_SEQ;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 

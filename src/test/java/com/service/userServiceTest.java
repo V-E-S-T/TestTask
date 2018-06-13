@@ -1,10 +1,9 @@
 package com.service;
 
-import model.User;
+import com.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.UserService;
-import util.exception.NotFoundException;
+import com.util.exception.NotFoundException;
 
 import java.sql.Date;
 import java.util.List;

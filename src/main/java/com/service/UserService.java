@@ -1,7 +1,7 @@
-package service;
+package com.service;
 
-import model.User;
-import util.exception.NotFoundException;
+import com.model.User;
+import com.util.exception.NotFoundException;
 
 import java.util.List;
 

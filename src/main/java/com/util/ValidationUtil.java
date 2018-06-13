@@ -1,7 +1,7 @@
-package util;
+package com.util;
 
-import model.AbstractEntity;
-import util.exception.NotFoundException;
+import com.model.AbstractEntity;
+import com.util.exception.NotFoundException;
 
 public class ValidationUtil {
 

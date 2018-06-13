@@ -1,6 +1,6 @@
-package repository;
+package com.repository;
 
-import model.User;
+import com.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 @Transactional(readOnly = true)
 public class JpaUserRepository implements UserRepository{
-
 
     @PersistenceContext
     private EntityManager em;

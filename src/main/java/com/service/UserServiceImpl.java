@@ -1,15 +1,15 @@
-package service;
+package com.service;
 
-import model.User;
+import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import repository.UserRepository;
-import util.exception.NotFoundException;
+import com.repository.UserRepository;
+import com.util.exception.NotFoundException;
 
 import java.util.List;
 
-import static util.ValidationUtil.checkNotFoundWithId;
+import static com.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class UserServiceImpl implements UserService{
