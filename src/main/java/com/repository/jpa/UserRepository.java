@@ -1,4 +1,4 @@
-package com.repository;
+package com.repository.jpa;
 
 import com.model.User;
 

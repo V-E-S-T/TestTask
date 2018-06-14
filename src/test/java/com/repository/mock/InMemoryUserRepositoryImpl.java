@@ -1,7 +1,7 @@
 package com.repository.mock;
 
 import com.model.User;
-import com.repository.UserRepository;
+import com.repository.jpa.UserRepository;
 import com.UserTestData;
 import org.springframework.stereotype.Repository;
 

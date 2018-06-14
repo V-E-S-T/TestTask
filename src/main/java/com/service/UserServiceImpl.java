@@ -4,7 +4,7 @@ import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import com.repository.UserRepository;
+import com.repository.jpa.UserRepository;
 import com.util.exception.NotFoundException;
 
 import java.util.List;

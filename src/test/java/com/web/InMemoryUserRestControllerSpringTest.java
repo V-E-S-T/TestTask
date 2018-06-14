@@ -3,8 +3,8 @@ package com.web;
 
 import com.model.User;
 import com.repository.mock.InMemoryUserRepositoryImpl;
-import com.web.user.UserRestController;
 import com.util.exception.NotFoundException;
+import com.web.user.UserRestController;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class InMemoryUserRestControllerSpringTest {
 
     @Test
     public void testDelete() throws Exception {
-        controller.delete(100000);
+        controller.delete(100009);
         Collection<User> users = controller.getAll();
         Assert.assertEquals(users.size(), 9);
         Assert.assertEquals(users.iterator().next(), USER3);

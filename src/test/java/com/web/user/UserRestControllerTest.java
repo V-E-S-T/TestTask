@@ -37,7 +37,7 @@ public class UserRestControllerTest extends AbstractControllerTest{
         mockMvc.perform(delete(REST_URL + 100000))
                 .andDo(print())
                 .andExpect(status().isNoContent());
-        assertMatch(userService.getAll(), USER0);
+        assertMatch(userService.getAll(), USER9, USER3, USER7, USER8, USER2, USER4, USER5, USER6, USER1);
     }
 
     @Test
