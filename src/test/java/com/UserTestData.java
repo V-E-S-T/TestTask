@@ -1,25 +1,27 @@
 package com;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.model.User;
+import com.web.converter.DateFormatters;
 import org.springframework.test.web.servlet.ResultMatcher;
-
-import java.util.*;
+import java.sql.Date;
+import java.text.DateFormat;
 import java.util.Arrays;
 
 import static com.model.AbstractEntity.START_SEQ;
+import static com.web.json.JacksonObjectMapper.getMapper;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 public class UserTestData {
 
-    public static final ObjectMapper MAPPER = new ObjectMapper();
+    //public static final ObjectMapper MAPPER = new ObjectMapper();
 
     //LocalDate.of(1986, 8, 15)
 
-    //Test Data
-    public static final User USER0 = new User(START_SEQ,        "Petro", "Sagaydak", new Date(1986, 8, 11), true);   //7
+    //Test Data                                 LocalDate.of(1986, 8, 11)
+    public static final User USER0 = new User(START_SEQ,        "Petro", "Sagaydak", Date.valueOf("1984-11-02"), true);   //7
     public static final User USER1 = new User(START_SEQ + 1, "Yakov", "Betrich", new Date(1987, 9, 2), true);    //9
     public static final User USER2 = new User(START_SEQ + 2, "Mustafa", "Mabibulin", new Date(1988, 10, 5), true);//4
     public static final User USER3 = new User(START_SEQ + 3, "Igor", "Kravec", new Date(1989, 11, 15), true);      //1
@@ -32,8 +34,20 @@ public class UserTestData {
 
 
     public static void assertMatch(User actual, User expected) {
-        //assertThat(actual).isEqualToIgnoringGivenFields(expected, "registered", "meals");
         assertThat(actual).isEqualToComparingFieldByField(expected);
+
+//        assertThat(actual).usingComparator((o1, o2) -> {
+//
+//            if (o1.getFirstName().equals(o2.getFirstName())
+//                    &o1.getLastName().equals(o2.getLastName())
+//                    &(o1.isMale() == o2.isMale())
+//                    &o1.getBirthDay().toString().equals(o2.getBirthDay().toString()))
+//            {
+//                return 1;
+//            }
+//            else
+//                return 0;
+//        }).isEqualTo(expected);
     }
 
     public static void assertMatch(Iterable<User> actual, User... expected) {
@@ -49,7 +63,7 @@ public class UserTestData {
     public static ResultMatcher contentJson(User... expected) {
 
         try {
-            return content().json(MAPPER.writeValueAsString(Arrays.asList(expected)));
+            return content().json(getMapper().writeValueAsString(Arrays.asList(expected)));
         } catch (JsonProcessingException e) {
             throw new IllegalStateException("Invalid write to JSON:\n'" + Arrays.asList(expected) + "'", e);
         }
@@ -58,7 +72,7 @@ public class UserTestData {
     public static ResultMatcher contentJson(User expected) {
 
         try {
-            return content().json(MAPPER.writeValueAsString(expected));
+            return content().json(getMapper().writeValueAsString(expected));
         } catch (JsonProcessingException e) {
             throw new IllegalStateException("Invalid write to JSON:\n'" + expected + "'", e);
         }

@@ -47,5 +47,4 @@ public class UserServiceImpl implements UserService{
         Assert.notNull(user, "user must not be null");
         checkNotFoundWithId(userRepository.save(user), user.getId());
     }
-
 }

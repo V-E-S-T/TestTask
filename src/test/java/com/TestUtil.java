@@ -4,6 +4,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import static com.web.json.JacksonObjectMapper.getMapper;
 
 public class TestUtil {
 
@@ -21,7 +22,7 @@ public class TestUtil {
 
         try
         {
-            return UserTestData.MAPPER.readValue(getContent(action), clazz);
+            return getMapper().readValue(getContent(action), clazz);
         }
         catch (IOException e)
         {

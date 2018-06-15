@@ -4,12 +4,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.*;
-//import java.sql.Date;
+import java.sql.Date;
 
+@NamedQueries({
+        @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.firstName, u.lastName"),
+})
 @Entity
 @Table(name = "users")
 public class User extends AbstractEntity {
+
+    public static final String ALL_SORTED = "User.getAllSorted";
 
     @Column(name = "firstName", nullable = false)
     @NotBlank

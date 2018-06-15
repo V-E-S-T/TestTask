@@ -12,6 +12,7 @@ import java.sql.Date;
 
 import static com.TestUtil.readFromJson;
 import static com.UserTestData.*;
+import static com.web.json.JacksonObjectMapper.getMapper;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -25,9 +26,10 @@ public class UserRestControllerTest extends AbstractControllerTest{
     @Test
     public void testGet() throws Exception {
         mockMvc.perform(get(REST_URL + 100000))
-                .andExpect(status().isOk())
                 .andDo(print())
-                // https://jira.spring.io/browse/SPR-14472
+                .andExpect(status().isOk())
+
+//                // https://jira.spring.io/browse/SPR-14472
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(contentJson(USER0));
     }
@@ -46,19 +48,23 @@ public class UserRestControllerTest extends AbstractControllerTest{
         updated.setFirstName("updatedFirstName");
         updated.setLastName("updatedLastName");
         mockMvc.perform(put(REST_URL + 100000)
+//                .andDo(print())
+//                .andExpect(status().isOk());
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(UserTestData.MAPPER.writeValueAsString(updated)))
+                .content(getMapper().writeValueAsString(updated)))
                 .andExpect(status().isOk());
 
         assertMatch(userService.get(100000), updated);
+        System.out.println("updated : " + updated);
+        System.out.println("expected : " + userService.get(100000));
     }
 
     @Test
     public void testCreate() throws Exception {
-        User expected = new User(null, "a_newFirstName", "a_newLastName", Date.valueOf("02-11-1984"), true);
+        User expected = new User(null, "a_newFirstName", "a_newLastName", new Date(1984, 2, 11), true);
         ResultActions action = mockMvc.perform(post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(UserTestData.MAPPER.writeValueAsString(expected)))
+                .content(getMapper().writeValueAsString(expected)))
                 .andExpect(status().isCreated());
 
         User returned = readFromJson(action, User.class);
