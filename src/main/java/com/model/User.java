@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import java.sql.Date;
 
 @NamedQueries({
-        @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.firstName, u.lastName"),
+        @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.firstName, u.lastName")
 })
 @Entity
 @Table(name = "users")
@@ -91,6 +91,5 @@ public class User extends AbstractEntity {
                 ", birthDay=" + birthDay +
                 ", gender=" + gender;
     }
-
 
 }

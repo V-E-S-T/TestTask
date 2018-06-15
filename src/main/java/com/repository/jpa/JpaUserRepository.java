@@ -13,7 +13,6 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class JpaUserRepository implements UserRepository{
 
-
     @PersistenceContext
     private EntityManager em;
 

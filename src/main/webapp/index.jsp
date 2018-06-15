@@ -7,9 +7,9 @@
     <title>TEST TASK</title>
 
 </head>
-<body>
+    <body>
 
-<h3>Test task</h3>
+        <h3>Test task</h3>
 
-</body>
+    </body>
 </html>
